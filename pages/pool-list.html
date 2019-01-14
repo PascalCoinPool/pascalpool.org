@@ -1,0 +1,484 @@
+<h2 class="pb-2 mt-4 mb-4 border-bottom">PascalCoin Pool List</h2>
+
+<div class="row">
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-cubes"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span>Network Height</span></div>
+	<div class="value"><span id="netHeight"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-dashboard"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span>Network Hashrate</span></div>
+	<div class="value"><span id="netHashrate"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-dollar"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span>Last Reward</span></div>
+	<div class="value"><span id="netReward"></span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-dollar icon_curr"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span class="label_curr_pasc">USD/PASC</span></div>
+	<div class="value"><span id="price_curr_pasc"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-exchange"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span>BTC/PASC</span></div>
+	<div class="value"><span id="price_btc_pasc"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-btc"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span class="label_curr_btc">USD/BTC</span></div>
+	<div class="value"><span id="price_curr_btc"></span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h3>Simple Profit Calculator</h3>
+<form id="profitCalc">
+  <div class="form-row">
+
+    <div class="col-12 col-lg-6 mb-2 mb-lb-0">
+      <div class="input-group">
+	<input type="text" name="hashrate" class="form-control"
+	       placeholder="Your Hashrate" aria-label="Your Hashrate">
+	<div class="input-group-append">
+	  <select name="hashrateMultiplier" class="form-control input-group-append">
+	    <option value="1">H/s</option>
+	    <option value="1000">KH/s</option>
+	    <option value="1000000">MH/s</option>
+	  </select>
+	</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="form-group">
+	<select class="form-control" id="currencySelect">
+	</select>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<div class="row" style="margin-top:20px">
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-dollar icon_curr"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span class="label_curr_day">USD/24h</span></div>
+	<div class="value"><span id="profit_curr_day"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-circle-thin"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span class="label_pasc_day">PASC/24h</span></div>
+	<div class="value"><span id="profit_pasc_day"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="infoBox">
+      <div class="icon">
+	<span class="fa fa-btc"></span>
+      </div>
+      <div class="content">
+	<div class="text"><span class="label_btc_day">BTC/24h</span></div>
+	<div class="value"><span id="profit_btc_day"></span></div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!--
+<br/><hr/><br/>
+
+<div>
+  <h3>Pool Address Checker</h3>
+  <p>Enter your PascalCoin account number and quickly check all known pools for mining stats.</p>
+  <form id="minerForm">
+    <div class="input-group mb-3">
+      <input type="text" name="address" class="form-control" aria-describedby="basic-addon2"
+	     placeholder="Your account number"
+	     aria-label="Your account number"
+	     >
+      <div class="input-group-append">
+	<button class="btn btn-primary" type="submit">Check Pools</button>
+      </div>
+    </div>
+  </form>
+  <div id="minerFormResults"></div>
+  <table id="minerTable" class="table table-striped table-bordered" style="width: 100%">
+    <thead>
+      <tr>
+	<th>Name</th>
+	<th>Hashrate</th>
+	<th>Last Share</th>
+	<th>Total Hashes</th>
+	<th>Pending Balance</th>
+	<th>Amount Paid</th>
+	<th>Payments</th>
+	<th></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+-->
+
+<br/><hr/><br/>
+
+<div>
+
+  <h3>Full Pool List</h3>
+  <p>A list of all PascalCoin pools we know about. Do you run a pool that is not listed? Make a pull request on our <a href="https://github.com/PascalCoinPool/pascalcoin-pools-json" target="_blank">pascalcoin-pools-json</a> GitHub repo.</p>
+  <p><strong>Note:</strong> The pools listed below are in order of the most recent block found by the pool. This helps push inactive pools towards the bottom of the list, but has the side effect of keeping the largest pools at the top. Please consider decentralizing your hashrate and mining on a smaller pool.</p>
+
+  <table id="pools" class="table table-striped table-bordered" style="width: 100%">
+    <thead>
+      <tr>
+	<th>Open Source</th>
+	<th>Name</th>
+	<th>Payment Method</th>
+	<th>Fee</th>
+	<th>Hashrate</th>
+	<th>Height</th>
+	<th>Min. Payment</th>
+	<th>Blocks Found</th>
+	<th>Last Block</th>
+	<th>Miners</th>
+	<th></th>
+      </tr>
+    </thead>
+  </table>
+
+</div>
+
+<script>
+
+var calcInterval = null;
+var poolInterval = null;
+
+var currencies = [{"code":"USD","name":"US Dollar"},{"code":"CAD","name":"Canadian Dollar"},{"code":"AUD","name":"Australian Dollar"},{"code":"EUR","name":"Euro"},{"code":"GBP","name":"British Pound Sterling"},{"code":"JPY","name":"Japanese Yen"},{"code":"RUR","name":"Ruble"},{"code":"UAH","name":"Ukrainian Hryvnia"},{"code":"IDR","name":"Indonesian Rupiah"},{"code":"BRL","name":"Brazilian Real"}];
+
+
+// Update current page
+currentPage = {
+    destroy: function(){
+	if(calcInterval) {
+	    clearInterval(calcInterval);
+	}
+	if(poolInterval) {
+	    clearInterval(calcInterval);
+	}
+	if(window.table) {
+	    window.table.destroy();
+	}
+    },
+    update: function(){
+	window.table = $('#pools').DataTable({
+	    orderFixed: [0, 'desc'],
+	    order: [[ 8, 'desc' ]],
+	    columnDefs: [
+		{
+		    targets: [0],
+		    visible: false,
+		    searchable: false
+		}
+	    ],
+	    searching: false,
+	    info: false,
+	    paging: false,
+	    lengthMenu: -1,
+	    columns: [
+		{ "data": "foss" },
+		{ "data": "display_name" },
+		{ "data": "payment", "width": "100px" },
+		{ "data": "fee", "width": "100px" },
+		{ "data": "hashrate", "width": "100px" },
+		{ "data": "height", "width": "100px" },
+		{ "data": "min_payment", "width": "140px" },
+		{ "data": "blocks_found", "width": "100px" },
+		{ "data": "last_block", "width": "100px" },
+		{ "data": "miners", "width": "100px" },
+		{
+		    "className":      'details-control',
+		    "orderable":      false,
+		    "data":           null,
+		    "defaultContent": '',
+		    "width": "20px"
+		}
+	    ],
+	    rowGroup: {
+		dataSrc: 'foss'
+	    }
+
+	});
+
+	$('#pools tbody').on('click', 'td.details-control', function () {
+	    var tr = $(this).closest('tr');
+	    var row = table.row( tr );
+
+	    if (row.child.isShown()) {
+		row.child.hide();
+		tr.removeClass('shown');
+	    } else {
+		var data = row.data();
+		var details = JSON.stringify(data.data, null, 2)
+		row.child( '<pre><code>'+details+'</code></pre>' ).show();
+		tr.addClass('shown');
+	    }
+	});
+
+	$.getJSON("/pascalcoin-pools-json/pascalcoin-pools.json", function(pools) {
+
+	    $.each(pools['pools'], function (i, pool) {
+		updatePoolData(pool);
+	    })
+
+	    poolInterval = setInterval(function () {
+		$.each(pools['pools'], function (i, pool) {
+		    updatePoolData(pool);
+		});
+	    }, 30000);
+
+	});
+
+
+	for(var i = 0; i < currencies.length; i++) {
+	    $('#currencySelect')
+		.append($("<option></option>")
+			.attr("value",currencies[i].code)
+			.text(currencies[i].code+' - '+currencies[i].name));
+	}
+
+	updatePriceInfo();
+	updateNetworkInfo();
+	calcInterval = setInterval(function () {
+	    updatePriceInfo();
+	    updateNetworkInfo();
+	}, 30000);
+	
+	$('#currencySelect').change(function() {
+	    updatePriceInfo();
+	});
+	$('input[name=hashrate]').on('input',function(e){
+	    updateProfitCalc();
+	});
+	$('select[name=hashrateMultiplier]').change(function() {
+	    updateProfitCalc();
+	});
+	
+    }
+};
+
+function updatePriceInfo() {
+    window.currency = $('#currencySelect').val().toUpperCase();
+    $.ajax({
+	url: '/api/price.php',
+	data: {'cache': (new Date()).getTime()},
+	success: function (data) {
+	    window.price_info = data;
+	    updateGlobalStats();
+	    updateProfitCalc();
+	}
+    });
+}
+function updateNetworkInfo() {
+    $.ajax({
+	url: '/api/network.php',
+	data: {'cache': (new Date()).getTime()},
+	success: function (data) {
+	    window.network_info = data;
+	    updateGlobalStats();
+	}
+    });
+}
+function updateProfitCalc() {
+
+    $('.label_curr_day').html(currency+'/24h');
+
+    var hashrate = parseFloat($('input[name=hashrate]').val()) * $('select[name=hashrateMultiplier]').val();
+    if(isNaN(hashrate)) {
+	return;
+    }
+    if(typeof price_info == 'undefined') {
+	return;
+    }
+    if(typeof network_info == 'undefined') {
+	return;
+    }
+    var percentage = hashrate/(network_info.hashratekhs*1000);
+
+    var pasc_24h = percentage * network_info.reward * 0.8 * 288;
+    var btc_24h = pasc_24h * price_info.BTC
+    var curr_24h = pasc_24h * price_info[currency];
+
+    $('#profit_curr_day').html(numberWithCommas(Math.round(curr_24h*100)/100));
+    $('#profit_pasc_day').html(numberWithCommas(Math.round(pasc_24h*100)/100));
+    $('#profit_btc_day').html(numberWithCommas(btc_24h.toFixed(8)));
+
+
+}
+function updateGlobalStats() {
+    if(typeof network_info != 'undefined') {
+	$('#netHeight').html(numberWithCommas(parseInt(network_info.block) + 1));
+	$('#netReward').html(numberWithCommas(network_info.reward + network_info.fee));
+	$('#netHashrate').html(getReadableHashRateString(network_info.hashratekhs*1000)+'/s');
+    }
+    if(typeof price_info != 'undefined') {
+	$('#price_btc_pasc').html(price_info.BTC);
+	$('#price_curr_btc').html(numberWithCommas(Math.round((1/price_info.BTC)*price_info[currency]*100)/100));
+	$('#price_curr_pasc').html(numberWithCommas(price_info[currency]));
+
+	$('.label_curr_pasc').html(currency+'/PASC');
+	$('.label_curr_btc').html(currency+'/BTC');
+
+	$('.icon_curr').removeClass (function (index, className) {
+	    return (className.match (/(^|\s)fa-\S+/g) || []).join(' ');
+	});
+	switch(currency) {
+	case 'USD':
+	case 'CAD':
+	case 'AUD':
+	    $('.icon_curr').addClass('fa-dollar');
+	    break;
+	case 'EUR':
+	    $('.icon_curr').addClass('fa-euro');
+	    break;
+	case 'GBP':
+	    $('.icon_curr').addClass('fa-gbp');
+	    break;
+	case 'JPY':
+	    $('.icon_curr').addClass('fa-jpy');
+	    break;
+	case 'RUR':
+	    $('.icon_curr').addClass('fa-ruble');
+	    break;
+	default:
+	    $('.icon_curr').addClass('fa-money');
+	    break;
+	}
+    }
+}
+
+
+function updatePoolData(pool) {
+    if(!('DT_RowId' in pool)) pool.DT_RowId = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+    if(!('foss' in pool)) pool.foss = pool.type == 'openpool' ? 'Open Source Pools' : 'Closed Source Pools';
+    if(!('display_name' in pool)) {
+	pool.display_name = pool.name;
+	pool.payment = pool.payment.join(', ');
+	if('url' in pool)
+	    pool.display_name = '<a class="btn btn-sm btn-outline-secondary" href="'+pool.url+'" target="_blank">'+pool.display_name+'</a>';
+    }
+    var data = encodeURIComponent(JSON.stringify(pool));
+    var url = '/api/pool.php?data=' + data + '&cache=' + (new Date()).getTime();
+    $.ajax({
+	url: url,
+	dataType: 'json',
+	type: 'GET',
+	cache: 'false',
+	success: function (data) {
+	    pool.fee = 'N/A';
+	    pool.min_payment = 'N/A';
+	    pool.hashrate = 'N/A';
+	    pool.blocks_found = 'N/A';
+	    pool.last_block = 'N/A';
+	    pool.miners = 'N/A';
+	    pool.miners_paid = 'N/A';
+	    pool.payments = 'N/A';
+	    pool.height = 'N/A';
+	    pool.data = {};
+	    if (data.status == 'ok') {
+		pool.fee = data.fee+'%';
+		if(data.min_payment != 'N/A')
+		    pool.min_payment = data.min_payment+ ' PASC';
+		if(data.hashrate != 'N/A')
+		    pool.hashrate = getReadableHashRateString(data.hashrate)+'/s';
+		if(data.blocks_found != 'N/A')
+		    pool.blocks_found = numberWithCommas(data.blocks_found);
+		if(data.last_block != 'N/A')
+		    pool.last_block = data.last_block ? convertTimestamp(data.last_block) : 'Never';
+		if(data.miners != 'N/A')
+		    pool.miners = numberWithCommas(data.miners);
+		if(data.miners_paid != 'N/A')
+		    pool.miners_paid = numberWithCommas(data.miners_paid);
+		if(data.payments != 'N/A')
+		    pool.payments = numberWithCommas(data.payments);
+		if(data.height != 'N/A')
+		    pool.height = numberWithCommas(data.height);
+		pool.data = data;
+	    }
+	    createUpdateRow(pool);
+	}
+    });
+}
+
+function createUpdateRow(pool) {
+    if(table.rows('[id='+pool.DT_RowId+']').any()) {
+	table.row('#'+pool.DT_RowId).data(pool).invalidate();
+	table.draw(false);
+    } else {
+	table.row.add(pool).draw();
+    }
+}
+</script>

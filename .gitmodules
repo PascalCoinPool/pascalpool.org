@@ -1,0 +1,3 @@
+[submodule "pascalcoin-pools-json"]
+	path = pascalcoin-pools-json
+	url = https://github.com/PascalCoinPool/pascalcoin-pools-json.git

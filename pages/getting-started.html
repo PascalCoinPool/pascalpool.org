@@ -1,0 +1,72 @@
+<!-- Jumbotron Header -->
+<header class="jumbotron my-4">
+  <div class="pasc-bg"></div>
+  <h1 class="display-4">Getting Started</h1>
+  <p class="lead">Follow this guide to start mining PascalCoin on one of our open-sourced pools.</p>
+</header>
+
+<div class="card p-3 mb-3">
+  <h3>Step 1: Download the Wallet</h3>
+  <p>Download the PascalCoin GUI wallet from GitHub using the link below.</p>
+  <p>
+    <a class="btn btn-primary" href="https://github.com/PascalCoin/PascalCoin/releases/latest" target="_blank">Download the PascalCoin Wallet</a>
+  </p>
+  <p>Make sure that you do not download the Testnet wallet. The PascalCoin GUI wallet is built for Windows but is compatible with MacOS through <a href="https://www.winehq.org/" target="_blank">Wine</a>.</p>
+  <p>Once downloaded, extract the archive and run the wallet. Due to PascalCoin's innovative SafeBox design, your wallet will be completely synced within about 5 minutes.</p>
+</div>
+
+<div class="card p-3 mb-3">
+  <h3>Step 2: Obtain Your PASA</h3>
+  <p>You will need a PascalCoin Account (called PASA) in order to send or receive coins. Once your wallet is synced, click on <code>Project > Private Keys</code> in the menu bar and you will see a key named <code>RANDOM NEW BY DAEMON</code>. Click on the key, then press <code>Change Name</code> and give it a name such as <code>Main Wallet</code>. Then press <code>Export Public key</code> and <code>OK</code>. Your public key will be copied to your clipboard.</p>
+  <p>It also a good idea to use the <code>Change password</code> and <code>Export all Wallet Keys to a file</code> buttons to ensure your wallet is secure and backed up. With your <strong>public</strong> key still copied to your clipboard, click on the link below.</p>
+  <p>
+    <a class="btn btn-primary" href="https://freepasa.org/" target="_blank">Get a Free PascalCoin Account</a>
+  </p>
+  <p>Paste your public key into the field labelled <code>Base58 Public Key</code> and follow the steps to obtain a free PascalCoin Account. You can also obtain an account from <a href="https://getpasa.com/" target="_blank">https://getpasa.com/</a>, or from solo-mining.</p>
+  <p>Once you have obtained your PascalCoin Account, make sure the <code>Explore Accounts with one of my Wallet Keys</code> checkbox is checked in the main wallet screen. Then wait for your account to be confirmed and appear in your wallet, which should take about 5-10 minutes.</p>
+</div>
+
+<div class="card p-3 mb-3">
+  <h3>Step 3: Download Miner Software</h3>
+  <p>PascalCoin uses the RandomHash proof of work algorithm which is designed to work on CPUs. While you can also mine on nVidia GPUs, it is not recommended as the hashrate is only a fraction of what even an older CPU's hashrate is. There are currently two miners that support RandomHash.</p>
+  <p>The recommended miner software is <code>rhminer</code> because it is open-sourced and peer reviewed code. This software has a 1% development fee which goes to support the development of PascalCoin. If you want to mine on an nVidia GPU, this is the only software that supports it. If you want to only CPU mine (recommended) then download <code>rhminer.1.3.Windows.CPU.zip</code>. If you want to GPU mine, <a href="https://github.com/polyminer1/rhminer#supported-cuda-architecture" target="_blank">choose the correct release</a> for your GPU's architecture.</p>
+  <p>
+    <a class="btn btn-primary" href="https://github.com/polyminer1/rhminer/releases" target="_blank">Download rhminer</a>
+  </p>
+  <p>The other option for mining software is <code>nanominer</code>. This software is closed-source and has a 3%-5% mining fee which does not support development of PascalCoin. It can only be used to CPU mine and is not compatible to mine PascalCoin with your GPU. We do not endorse the usage of this software, but our open-sourced pools do support mining with this program.</p>
+  <p>
+    <a class="btn btn-primary" href="https://github.com/nanopool/nanominer/releases" target="_blank">Download nanominer</a>
+  </p>
+</div>
+
+<div class="card p-3 mb-3">
+  <h3>Step 4: Choose a Pool</h3>
+  <p>There are a few factors to consider when selecting a pool to mine on. If you choose a pool that has a large percentage of the network's hashrate you'll get more payouts, but each payout will only be fractions of a coin. Conversely, if you choose a smaller pool you'll get less payouts, but each payout will be for a larger percentage of the block reward. Over a long period of time, your earnings will equalize no matter if you choose a large or small pool.</p>
+  <p>Another factor to consider when choosing a pool is the fee structure. Since small and large pools will earn about the same over a longer period of time, the pool fee is an important factor to consider. Larger pools tend to have a larger fee than their smaller counterparts who must be competitive. Additionally check to see if the pool you're going to mine on pays out PASA, and how many coins they require you to mine before transferring accounts. You should receive 1 PASA per 10 PASC but some pools only pay out 1 PASA per 20 PASC which is effectively a 50% fee on your earned PASA.</p>
+  <p>Choosing a pool will one of the most important decisions you make when starting to mine PascalCoin. Please consider mining on a smaller pool to help decentralize the network. The open-sourced mining pool was developed in order to give miners the freedom to have more pool options.</p>
+  <p>
+    <a class="btn btn-primary" href="#pool-list">View Full Pool List</a>
+  </p>
+</div>
+
+<div class="card p-3 mb-3">
+  <h3>Step 5: Configure Your Miner</h3>
+  <p>Now that you have chosen a pool, look for a <code>Help</code> or <code>Getting Started</code> page on the pool you intend to mine to. Most likely it will contain either instructions for connecting to the pool or a configuration generator.<p>
+  <p>If you are using <code>rhminer</code>, you will also want to configure the amount of threads used to optimize your hashrate. Edit the file <code>pool-mining.bat</code> and change the <code>-cputhreads</code> setting to the number of threads your CPU supports. If this causes too much system lag then reduce the thread count by one or two threads. For GPU settings, <a href="https://github.com/polyminer1/rhminer#gpu-mining" target="_blank">see the rhminer readme file</a>.</p>
+  <p>If you are using <code>nanominer</code> you will not be able to change the amount of threads used by the software.</p>
+</div>
+
+<div class="card p-3 mb-3">
+  <h3>Step 6: Connect to the Pool</h3>
+  <p>Once your miner is configured run the start script. If there are any errors connecting they will be displayed. If the errors scroll too fast on the screen or the script closes immediately, you may need to add a <code>pause</code> command in your start script in order to make the error readable.</p>
+  <p>Once you are connected, your miner should start submitting shares. After a few shares, your account will show up on the pool's website where you can see your reported hashrate and change miner settings. Until you are sure your miner is stable and does not crash, keep an eye on the pool's frontend a few times a day to make sure you have not been disconnected. The open-sourced pool software supports email notifications that will alert you if your miner stops submitting hashes.</p>
+</div>
+
+<div class="card p-3 mb-3">
+  <h3>Step 7: Join our Community</h3>
+  <p>If you are having any problems connecting to a pool, join one of our groups and ask for help&mdash;or if you just want to tell us that you have everything working and are ready to mine PascalCoin, join us too.
+  <p>
+    <a class="btn btn-primary" href="https://discord.gg/sJqcgtD" target="_blank">Join Discord</a>
+    <a class="btn btn-primary" href="https://www.reddit.com/r/pascalcoin/" target="_blank">Open Reddit</a>
+  </p>
+</div>

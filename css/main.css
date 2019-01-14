@@ -1,0 +1,326 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 36px;
+    font-size: 14px;
+}
+
+#page-wrapper {
+    margin: 30px 0 100px;
+}
+
+::-moz-selection {
+    background: #f8a84d;
+    color: black;
+}
+::selection {
+    background: #f8a84d;
+    color: black;
+}
+
+a {
+    color: #c47b22;
+}
+a:hover,
+a:active,
+a:focus {
+    color: #b3701f;
+}
+
+.btn-primary,
+.btn-primary:visited {
+    color: black;
+    background-color: #f8a84d;
+    border-color: #f8a84d;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:hover,
+.btn-primary:active {
+    color: black;
+    background-color: #c47b22;
+    border-color: #c47b22;
+}
+
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(248,168,77,.5);
+}
+
+.monospace {
+    font-family: 'Inconsolata', monospace, monospace;
+}
+
+h1,h2,h3,h4,h5,h6 { font-weight: 400; }
+
+/* NAVBAR */
+
+.container {
+    max-width: 1140px;
+}
+
+.navbar-container {
+    background: #f8a84d;
+    border-bottom: 1px solid #c47b22;
+}
+.navbar {
+    padding: 0;
+}
+
+.navbar-brand {
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+}
+
+.navbar-brand svg {
+    vertical-align: text-bottom;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #222;
+}
+
+.navbar .navbar-nav .nav-link {
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    padding-top: 0;
+    padding-right: 15px;
+    padding-bottom: 0;
+    padding-left: 15px;
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link[aria-expanded=true] {
+    background: #c47b22;
+}
+.navbar .navbar-nav .dropdown-menu {
+    top: 95%;
+    padding: 5px 0;
+    border-radius: 0;
+    font-size: 14px;
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-item {
+    padding: 5px 15px;
+    height: auto;
+    line-height: unset;
+}
+
+
+.navbar .navbar-nav .dropdown-menu {
+    background-color: #f8a84d;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar .navbar-nav .dropdown-menu .dropdown-item:active {
+    background-color: #c47b22;
+    color: #222222;
+    border-radius: 0;
+}
+
+
+@media screen and (min-width: 992px) {
+    .navbar .navbar-nav .nav-item.active .nav-link {
+        /*border-bottom: 1px solid #c47b22;*/
+    }
+    .navbar .navbar-nav .dropdown-menu {
+        background-color: white;
+    }
+    .navbar .navbar-nav .dropdown-menu .dropdown-item:hover,
+    .navbar .navbar-nav .dropdown-menu .dropdown-item:active {
+        color: #222222;
+        background-color: #ccc;
+    }
+}
+
+.navbar .form-control,
+.navbar .btn {
+    font-size: 14px;
+}
+
+.subnavbar-container {
+    background: #f5f5f5;
+    padding: 3px 0;
+}
+
+/* Footer */
+footer {
+    font-size: 14px;
+    background-color: #f5f5f5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+
+}
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 7.5px ;
+    padding-bottom: 7.5px;
+}
+
+/* Other styles */
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    background: #f5f5f5;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+.jumbotron .pasc-bg {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -30%;
+    z-index: 1;
+    background-image: url(/images/pascalcoin.svg);
+    opacity: 0.05;
+    background-position: 52% 0;
+    background-repeat: no-repeat;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.jumbotron a {
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+    height: 100%;
+}
+.card .card-img-top {
+    width: 100%;
+    padding-top: 60%;
+}
+
+.card.rhminer .card-img-top {
+    background: url(/images/polyminer1.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.source-code .card-img-top {
+    background: url(/images/github.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.pool .card-img-top {
+    background: url(/images/cpu.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.pool-list .card-img-top {
+    background: url(/images/network.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.free-pasa .card-img-top {
+    background: url(/images/pasa.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.discord .card-img-top {
+    background: url(/images/discord.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.reddit .card-img-top {
+    background: url(/images/reddit.png) center center no-repeat;
+    background-size: cover;
+}
+
+.card.pascal-store .card-img-top {
+    background: url(/images/pascal-store.png) center center no-repeat;
+    background-size: cover;
+}
+
+
+/* Info box */
+.infoBox {
+    background: #f5f5f5;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    height: 80px;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+@media (max-width: 767px){
+    .infoBox{
+        margin-bottom: 15px;
+    }
+}
+.infoBox .icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    text-align: center;
+    font-size: 60px;
+    line-height: 60px;
+    width: 75px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.1);
+}
+.infoBox .content {
+    display: inline-block;
+    padding: 7px 16px;
+}
+.infoBox .content .text {
+    font-size: 13px;
+    margin-top: 11px;
+    color: #222;
+    text-transform: uppercase;
+}
+.infoBox .content .value {
+    font-size: 20px;
+    margin-top: -4px;
+    color: #222;
+}
+.infoBox .content .value .smallText {
+    font-size: 14px;
+    font-weight: normal;
+}
+.infoBox .content .value .mediumText {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.infoBox .content .value a {
+    color: #222;
+}
+
+#minerTable_wrapper,
+#pools_wrapper {
+    overflow-x:auto;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+    
+table,tr,td,th {
+    border: none!important;
+
+}
+
+table.dataTable tr.group td{
+  background-color:rgba(0,0,0,.15);
+}
+td.details-control:before {
+  content: "[+]";
+  cursor: pointer;
+}
+tr.shown td.details-control:before {
+  content: "[-]";
+}
