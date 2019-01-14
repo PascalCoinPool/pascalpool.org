@@ -50,23 +50,27 @@ if($pool['type'] == 'openpool') {
 
     $response = callAPI($url);
 
-    $fee = 0;
-    $fee += $response['config']['fee'];
-    if($response['config']['donation'] ?? null) {
-        foreach($response['config']['donation'] as $donation) {
-            $fee += $donation;
-        }
-    }
+    if($response) {
 
-    $pool_data['fee'] = $fee;
-    $pool_data['min_payment'] = $response['config']['minPaymentThreshold'];
-    $pool_data['hashrate'] = $response['pool']['hashrate'];
-    $pool_data['blocks_found'] = $response['pool']['totalBlocks'];
-    $pool_data['last_block'] = $response['pool']['lastBlockFound'] ?? 0;
-    $pool_data['miners'] = $response['pool']['miners'];
-    $pool_data['miners_paid'] = $response['pool']['totalMinersPaid'];
-    $pool_data['payments'] = $response['pool']['totalPayments'];
-    $pool_data['height'] = $response['network']['height'];
+        $fee = 0;
+        $fee += $response['config']['fee'];
+        if($response['config']['donation'] ?? null) {
+            foreach($response['config']['donation'] as $donation) {
+                $fee += $donation;
+            }
+        }
+
+        $pool_data['fee'] = $fee;
+        $pool_data['min_payment'] = $response['config']['minPaymentThreshold'];
+        $pool_data['hashrate'] = $response['pool']['hashrate'];
+        $pool_data['blocks_found'] = $response['pool']['totalBlocks'];
+        $pool_data['last_block'] = $response['pool']['lastBlockFound'] ?? 0;
+        $pool_data['miners'] = $response['pool']['miners'];
+        $pool_data['miners_paid'] = $response['pool']['totalMinersPaid'];
+        $pool_data['payments'] = $response['pool']['totalPayments'];
+        $pool_data['height'] = $response['network']['height'];
+
+    }
 
     $pool_data['status'] = 'ok';
 

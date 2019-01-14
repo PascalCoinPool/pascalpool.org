@@ -51,6 +51,7 @@ window.onhashchange = function() {
 var xhrPageLoading;
 function routePage(loadedCallback) {
     if(currentPage) currentPage.destroy();
+    currentPage = null;
     $('#page').html('');
     $('#loading').show();
 
@@ -72,8 +73,8 @@ function routePage(loadedCallback) {
             $('#menu-content').collapse('hide');
             $('#loading').hide();
             $('#page').show().html(data);
-            if(currentPage) currentPage.update();
-            if(loadedCallback) loadedCallback();
+	    if(currentPage) currentPage.update();
+	    if(loadedCallback) loadedCallback();
         }
     });
 }

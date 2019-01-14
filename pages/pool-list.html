@@ -219,6 +219,7 @@ var poolInterval = null;
 
 var currencies = [{"code":"USD","name":"US Dollar"},{"code":"CAD","name":"Canadian Dollar"},{"code":"AUD","name":"Australian Dollar"},{"code":"EUR","name":"Euro"},{"code":"GBP","name":"British Pound Sterling"},{"code":"JPY","name":"Japanese Yen"},{"code":"RUR","name":"Ruble"},{"code":"UAH","name":"Ukrainian Hryvnia"},{"code":"IDR","name":"Indonesian Rupiah"},{"code":"BRL","name":"Brazilian Real"}];
 
+var id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
 
 // Update current page
 currentPage = {
@@ -227,7 +228,7 @@ currentPage = {
 	    clearInterval(calcInterval);
 	}
 	if(poolInterval) {
-	    clearInterval(calcInterval);
+	    clearInterval(poolInterval);
 	}
 	if(window.table) {
 	    window.table.destroy();
@@ -288,19 +289,25 @@ currentPage = {
 	    }
 	});
 
-	$.getJSON("/pascalcoin-pools-json/pascalcoin-pools.json", function(pools) {
-
-	    $.each(pools['pools'], function (i, pool) {
-		updatePoolData(pool);
-	    })
-
-	    poolInterval = setInterval(function () {
+	$.ajax({
+	    cache: false,
+	    url: "/pascalcoin-pools-json/pascalcoin-pools.json",
+	    dataType: "json",
+	    success: function(pools) {
 		$.each(pools['pools'], function (i, pool) {
 		    updatePoolData(pool);
-		});
-	    }, 30000);
+		})
 
+		var _id = id;
+		poolInterval = setInterval(function () {
+		    if(id != id) return;
+		    $.each(pools['pools'], function (i, pool) {
+			updatePoolData(pool);
+		    });
+		}, 30000);
+	    }
 	});
+	
 
 
 	for(var i = 0; i < currencies.length; i++) {
