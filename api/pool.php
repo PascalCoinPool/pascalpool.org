@@ -54,11 +54,7 @@ if($pool['type'] == 'openpool') {
 
         $fee = 0;
         $fee += $response['config']['fee'];
-        if($response['config']['donation'] ?? null) {
-            foreach($response['config']['donation'] as $donation) {
-                $fee += $donation;
-            }
-        }
+        $fee += $response['config']['devFee'] ?? 0;
 
         $pool_data['fee'] = $fee;
         $pool_data['min_payment'] = $response['config']['minPaymentThreshold'];
@@ -114,7 +110,7 @@ if($pool['type'] == 'openpool') {
                 $pool_info = $response['data'][$i];
                 
                 $pool_data['fee'] = 2;
-                $pool_data['min_payment'] = 10;
+                $pool_data['min_payment'] = 2;
                 $pool_data['hashrate'] = $pool_info['poolStats']['hashrate'];
                 $pool_data['miners'] = $pool_info['poolStats']['miners'];
 
